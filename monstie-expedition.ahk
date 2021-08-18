@@ -37,6 +37,12 @@ loop {
             }
 
             ClickNext()
+
+            ClickOk()
+
+            ClickDepart()
+
+            ClickConfirm()
         }
     }
 }
@@ -71,11 +77,39 @@ DepartExp(x, y) {
     
     Sleep, 800
 
-    ImageSearch, DepartX, DepartY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\depart.png
-    MouseClick, L, DepartX, DepartY, 2
+    ClickDepart()
 
     Sleep, 500
 
+    ClickConfirm()
+}
+
+ClickDepart() {
+    ImageSearch, DepartX, DepartY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\depart.png
+
+    if (ErrorLevel == 0) {
+        MouseClick, L, DepartX, DepartY
+    }
+
+    ImageSearch, DepartBlueX, DepartBlueY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\depart-blue.png
+
+    if (ErrorLevel == 0) {
+        MouseClick, L, DepartBlueX, DepartBlueY
+    }
+}
+
+ClickConfirm() {
     ImageSearch, DepartConfirmX, DepartConfirmY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\depart-confirm.png
-     MouseClick, L, DepartConfirmX, DepartConfirmY
+    
+    if (ErrorLevel == 0) {
+        MouseClick, L, DepartConfirmX, DepartConfirmY
+    }
+}
+
+ClickOk() {
+    ImageSearch, OkX, OkY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\ok.png
+
+    if (ErrorLevel == 0) {
+        MouseClick, L, OkX, OkY
+    }
 }
