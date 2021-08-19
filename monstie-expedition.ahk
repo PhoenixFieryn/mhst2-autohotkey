@@ -8,7 +8,7 @@ loop {
     MonstieExpX = false
     MonstieExpY = false
     
-    ImageSearch, MonstieExpX, MonstieExpY, 0, 0, 160, 70, *20 %A_ScriptDir%\images\monstie-exp.png
+    ImageSearch, MonstieExpX, MonstieExpY, 0, 0, 160, 70, *30 %A_ScriptDir%\images\monstie-exp.png
 
     if (MonstieExpX != false and MonstieExpY != false) {
 
@@ -16,19 +16,19 @@ loop {
             If not Toggle
                 break
 
-            ImageSearch, ReadyX, ReadyY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\ready.png
+            ImageSearch, ReadyX, ReadyY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\ready.png
 
             if (ErrorLevel == 0) {
                 DepartExp(ReadyX, ReadyY)
             }
 
-            ImageSearch, ExpCompletionX, ExpCompletionY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\done.png
+            ImageSearch, ExpCompletionX, ExpCompletionY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\done.png
 
             if (ErrorLevel == 0) {
                 MouseClick, L, ExpCompletionX, ExpCompletionY
             }
 
-            ImageSearch, TakeAllX, TakeAllY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\take-all.png
+            ImageSearch, TakeAllX, TakeAllY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\take-all.png
 
             if (ErrorLevel == 0) {
                 MouseClick, L, TakeAllX, TakeAllY
@@ -43,6 +43,8 @@ loop {
             ClickDepart()
 
             ClickConfirm()
+            
+            SwitchScreen()
         }
     }
 }
@@ -53,19 +55,19 @@ ExitApp
 return
 
 IsItemScreen() {
-    ImageSearch, ItemScreenX, ItemScreenY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\items.png
+    ImageSearch, ItemScreenX, ItemScreenY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\items.png
 
     return ErrorLevel == 0
 }
 
 IsResultsScreen() {
-    ImageSearch, FindX, FindY, 0, 0, 160, 70, *20 %A_ScriptDir%\images\results.png
+    ImageSearch, FindX, FindY, 0, 0, 160, 70, *30 %A_ScriptDir%\images\results.png
 
     return ErrorLevel == 0
 }
 
 ClickNext() {
-    ImageSearch, NextX, NextY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\next.png
+    ImageSearch, NextX, NextY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\next.png
 
     if (ErrorLevel == 0) {
         MouseClick, L, NextX, NextY
@@ -85,13 +87,13 @@ DepartExp(x, y) {
 }
 
 ClickDepart() {
-    ImageSearch, DepartX, DepartY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\depart.png
+    ImageSearch, DepartX, DepartY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\depart.png
 
     if (ErrorLevel == 0) {
         MouseClick, L, DepartX, DepartY
     }
 
-    ImageSearch, DepartBlueX, DepartBlueY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\depart-blue.png
+    ImageSearch, DepartBlueX, DepartBlueY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\depart-blue.png
 
     if (ErrorLevel == 0) {
         MouseClick, L, DepartBlueX, DepartBlueY
@@ -99,7 +101,7 @@ ClickDepart() {
 }
 
 ClickConfirm() {
-    ImageSearch, DepartConfirmX, DepartConfirmY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\depart-confirm.png
+    ImageSearch, DepartConfirmX, DepartConfirmY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\depart-confirm.png
     
     if (ErrorLevel == 0) {
         MouseClick, L, DepartConfirmX, DepartConfirmY
@@ -107,9 +109,17 @@ ClickConfirm() {
 }
 
 ClickOk() {
-    ImageSearch, OkX, OkY, 0, 0, A_ScreenWidth, A_ScreenHeight, *20 %A_ScriptDir%\images\ok.png
+    ImageSearch, OkX, OkY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\ok.png
 
     if (ErrorLevel == 0) {
         MouseClick, L, OkX, OkY
+    }
+}
+
+SwitchScreen() {
+    ImageSearch, ArrowX, ArrowY, 0, 0, A_ScreenWidth, A_ScreenHeight, *30 %A_ScriptDir%\images\arrow.png
+
+    if (ErrorLevel == 0) {
+        MouseClick, L, SwitchScreen, ArrowX, ArrowY
     }
 }
